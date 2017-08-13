@@ -4,7 +4,7 @@ import { bubble as Menu } from 'react-burger-menu'
 
 var styles = {
   bmBurgerButton: {
-    'z-index': 1,
+    zIndex: '1',
     position: 'fixed',
     width: '36px',
     height: '19px',
@@ -69,20 +69,27 @@ render() {
       width: '100%',
       height: '100%'
     }
+
     return (
       <Map google={this.props.google}
-          zoom={14}
+          zoom={16}
           style={style}
           initialCenter={{
-            lat: -26.10756635,
-            lng: 28.056700699999965
+            lat: -26.107567,
+            lng: 28.056702
           }}
+          centerAroundCurrentLocation={false}
           onClick={this.onMapClick}
       >
       <Marker onClick={this.onMarkerClick}
               title={'The marker`s title will appear as a tooltip.'}
               name={'Sandton City'}
-              position={{lat: -26.10756635, lng: 28.056700699999965}} />
+              position={{lat: -26.107567, lng: 28.056702}} />
+
+              <Marker onClick={this.onMarkerClick}
+                      title={'The marker`s title will appear as a tooltip.'}
+                      name={'Current location'}
+                      position={{lat: -24.10756635, lng: 23.056700699999965}} />
       <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
@@ -91,8 +98,7 @@ render() {
               <h1>{this.state.selectedPlace.name}</h1>
             </div>
         </InfoWindow>
-
-        <Menu isOpen={false} right styles={styles}>
+        <Menu isOpen={false} width={'120px'} right styles={styles}>
        <a id="home" className="menu-item" href="/">Home</a>
        <a id="about" className="menu-item" href="/about">About</a>
        <a id="contact" className="menu-item" href="/contact">Contact</a>
