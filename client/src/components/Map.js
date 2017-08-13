@@ -10,6 +10,7 @@ constructor() {
     activeMarker: {},
     selectedPlace: {}
   }
+  this.setMarkers = this.setMarkers.bind(this)
 }
 
 onMarkerClick = (props, marker, e) => {
@@ -25,13 +26,15 @@ onMapClick = (props, map, e) => {
     showingInfoWindow:false
   })
 }
-setMarkers = (data) => {
+setMarkers = (data2, query) => {
+  let data = data2[query];
+  console.log("The data: " +  JSON.stringify(data));
   this.setState({
     bestBefore: data.bestBefore,
     checkoutRate: data.checkoutRate,
     inStock: data.inStock,
-    lat: data.lat,
-    lng: data.lng,
+    lat: data.latitude,
+    lng: data.longitude,
     productBrand: data.productBrand,
     store: 'Pick n Pay'
   });
@@ -71,7 +74,7 @@ render() {
               <h4>{this.state.productBrand}</h4>
             </div>
         </InfoWindow>
-        <Search setMarkersData={this.setMarkers.bind(this)}/>
+        <Search setMarkersData={this.setMarkers}/>
       </Map>
     );
   }

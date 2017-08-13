@@ -1,6 +1,6 @@
 {
   "DB" : {
-    "DUMMY_DB": "https://foodspy-a3640.firebaseio.com",
+    "DUMMY_DB": "https://picknpay-37649.firebaseio.com/",
     "DUMMY_COLLECTION": "/",
     "CONNECTION_OPTS": {
       "server": {
@@ -26,7 +26,7 @@
       "storageBucket": "picknpay-37649.appspot.com",
       "messagingSenderId": "49973724347"
     },
-    "SERVICE_ACCOUNT" : "./config/foodspy-fa40e85ea7b6.json"
+    "SERVICE_ACCOUNT" : "./config/picknpay-37649-firebase-adminsdk-4jjow-99e6e05fce.json"
   },
   "SERVER" : {
     "PORT" : 4300
