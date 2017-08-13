@@ -1,7 +1,7 @@
 import React, {Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import Search from './Search';
-
+import '../generated-sources/map-styles.css';
 export class MapContainer extends Component {
 constructor() {
   super();
@@ -41,7 +41,6 @@ render() {
     width: '100%',
     height: '100%'
   }
-  console.log("Map state: " + this.state.lng + " AND " + this.state.lat);
 
   return (
     <Map google={this.props.google}
@@ -60,11 +59,12 @@ render() {
               name={this.state.store}
               position={{lat: this.state.lat, lng: this.state.lng}} />
       <InfoWindow
+          className={"info-window"}
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
           onClose={this.onInfoWindowClose}>
-            <div>
-              <h1>{this.state.selectedPlace.name}</h1>
+            <div className="info-window">
+              <h2>{this.state.selectedPlace.name}</h2>
               <h4>{this.state.bestBefore}</h4>
               <h4>{this.state.checkoutRate}</h4>
               <h4>{this.state.inStock}</h4>

@@ -4,6 +4,7 @@
 /node_modules
 /server/node_modules
 /client/node_modules
+/client/src/generated-sources
 foodspy-fa40e85ea7b6.json
 # testing
 /coverage
