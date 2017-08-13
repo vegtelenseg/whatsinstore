@@ -1,0 +1,27 @@
+{
+  "name": "wis",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:4300/",
+  "dependencies": {
+    "google-maps-react": "^1.1.0",
+    "react": "^15.6.1",
+    "react-burger-menu": "^2.1.4",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "react-scripts": "1.0.11",
+     "npm-run-all": "^4.0.2",
+     "node-sass": "^4.5.2"
+  },
+  "scripts": {
+      "build-css": "node-sass src/sass/ -o src/generated-sources/",
+      "watch-css": "npm run build-css && node-sass src/sass -o src/generated-sources/ --watch --recursive",
+      "server": "nodemon ../server/app.js",
+      "start-js": "react-scripts start",
+      "start": "npm-run-all -p server watch-css start-js",
+      "build": "npm run build-css && react-scripts build --history-api-fallback",
+      "test": "react-scripts test --env=jsdom",
+      "eject": "react-scripts eject"
+    }
+}

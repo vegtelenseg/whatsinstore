@@ -1,0 +1,15 @@
+.search-container {
+  position: relative;
+  padding-top: 145px;
+  #search-bar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 30px;
+    width: 260px;
+    border-radius: 9px;
+    text-align: center;
+    outline: none;
+  }
+}
