@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import MapContainer from './Map';
 import { bubble as Menu } from 'react-burger-menu'
-import Search from './Search';
 
 var styles = {
   bmBurgerButton: {
@@ -51,7 +50,6 @@ class App extends Component {
           <a id="contact" className="menu-item" href="/contact">Contact</a>
           <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
         </Menu>
-        <Search />
       </div>
 
     );

@@ -40,6 +40,7 @@ if (process.env.NODE_ENV === config.ENV.PROD) {
 
 
 app.get('/api/food', (req, res, next) => {
+  console.log("about to search: " + req.query);
     ref.once("value", snapshot => {
       return res.send(snapshot.val());
   });

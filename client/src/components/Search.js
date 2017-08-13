@@ -14,7 +14,15 @@ class Search extends  Component {
   }
   checkIfEnter = (e) => {
     if (e.key === 'Enter') {
-      console.log("Enter pressed");
+      let data = {
+        bestBefore: '08/04/18',
+        checkoutRate:9,
+        inStock: 23,
+        lat: -26.107567,
+        lng: 28.056702,
+        productBrand: 'Tiger Brands'
+      }
+      this.props.setMarkersData(data);
     }
   }
   render() {
