@@ -37,20 +37,14 @@ onMapClick = (props, map, e) => {
 setMarkers = (data2, query) => {
   let data = data2[query];
   this.setState({
-    bestBefore: data.bestBefore,
-    checkoutRate: data.checkoutRate,
-    inStock: data.inStock,
+    ...data,
     lat: data.latitude,
     lng: data.longitude,
-    productBrand: data.productBrand,
-    store: data.store
   });
 }
-updateMarkers = (obj) => {
-  let data = obj['obj'];
+updateMarkers = (data) => {
   this.setState({
-    checkoutRate: data.checkoutRate,
-    inStock: data.inStock
+    ...data
   })
 }
 render() {
@@ -72,9 +66,9 @@ render() {
           onClick={this.onMapClick}
       >
       <Marker onClick={this.onMarkerClick}
-              title={"The marker's title will appear as a tooltip."}
               name={this.state.store}
-              position={{lat: this.state.lat, lng: this.state.lng}} />
+              position={{lat: this.state.lat, lng: this.state.lng}}
+              label={JSON.stringify(this.state.inStock)} />
       <InfoWindow
           className={"info-window"}
           marker={this.state.activeMarker}
