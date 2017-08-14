@@ -27,11 +27,11 @@ class Search extends  Component {
       lng: 28.056702,
       productBrand: 'Tiger Brands'
     }*/
-    fetch(`api/food?q=${this.state.inputValue}`, headers)
+    fetch(`/api/food?q=${this.state.inputValue}`, headers)
       .then((data) => {
         return data.json();
       }).then(parsed => {
-        this.props.setMarkersData(parsed, this.state.inputValue);
+        return this.props.setMarkersData(parsed, this.state.inputValue);
       });
   }
 }

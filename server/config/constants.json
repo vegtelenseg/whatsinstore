@@ -26,7 +26,7 @@
       "storageBucket": "picknpay-37649.appspot.com",
       "messagingSenderId": "49973724347"
     },
-    "SERVICE_ACCOUNT" : "./config/picknpay-37649-firebase-adminsdk-4jjow-99e6e05fce.json"
+    "SERVICE_ACCOUNT" : "./config/picknpay-37649-firebase-adminsdk-4jjow-2c7b4d6987.json"
   },
   "SERVER" : {
     "PORT" : 4300
