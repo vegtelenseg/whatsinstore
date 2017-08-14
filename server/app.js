@@ -28,6 +28,7 @@ var db = admin.database(),
  * @param snapshot : contains the modified document from the database
 **/
 ref.on("child_changed", function(snapshot) {
+  console.log("Something changed");
     let changedItem = snapshot.val();
     io.emit('product changed', {obj: changedItem});
 });

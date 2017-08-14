@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import '../generated-sources/search.css';
+import io from 'socket.io-client';
+
+const socket = io.connect('http://localhost:4300');
 class Search extends  Component {
   constructor() {
     super();
@@ -12,6 +15,11 @@ class Search extends  Component {
       inputValue: e.target.value
     })
   }
+  componentWillMount = () => {
+    socket.on('product changed', (data) => {
+      return this.props.updateMarkersData(data)
+    })
+  }
   checkIfEnter = (e) => {
     if (e.key === 'Enter') {
       const headers = new Headers({
@@ -19,33 +27,25 @@ class Search extends  Component {
         'Accept': 'application/json',
         'Access-Control-Allow-Origin': '*',
       });
-      /*let data = {
-      bestBefore: '08/04/18',
-      checkoutRate:9,
-      inStock: 23,
-      lat: -26.107567,
-      lng: 28.056702,
-      productBrand: 'Tiger Brands'
-    }*/
-    fetch(`/api/food?q=${this.state.inputValue}`, headers)
-      .then((data) => {
-        return data.json();
+      fetch(`/api/food?q=${this.state.inputValue}`, headers)
+        .then((data) => {
+          return data.json();
       }).then(parsed => {
         return this.props.setMarkersData(parsed, this.state.inputValue);
       });
+    }
   }
-}
-render() {
-  return (
-    <div className="search-container">
-    <input id="search-bar"
-    value={this.state.inputValue}
-    onChange={this.updateInputValue.bind(this)}
-    onKeyPress={this.checkIfEnter.bind(this)}
-    placeholder="Search for a product"/>
-    </div>
-  );
-}
+  render() {
+    return (
+      <div className="search-container">
+      <input id="search-bar"
+      value={this.state.inputValue}
+      onChange={this.updateInputValue.bind(this)}
+      onKeyPress={this.checkIfEnter.bind(this)}
+      placeholder="Search for a product"/>
+      </div>
+    );
+  }
 }
 
 export default Search;

@@ -18,6 +18,7 @@ constructor() {
     store:''
   }
   this.setMarkers = this.setMarkers.bind(this)
+  this.updateMarkers = this.updateMarkers.bind(this)
 }
 
 onMarkerClick = (props, marker, e) => {
@@ -42,10 +43,15 @@ setMarkers = (data2, query) => {
     lat: data.latitude,
     lng: data.longitude,
     productBrand: data.productBrand,
-    store: 'Pick n Pay'
-  }, () => {
-    console.log("The data: " +  JSON.stringify(data));
+    store: data.store
   });
+}
+updateMarkers = (obj) => {
+  let data = obj['obj'];
+  this.setState({
+    checkoutRate: data.checkoutRate,
+    inStock: data.inStock
+  })
 }
 render() {
   const style = {
@@ -82,7 +88,7 @@ render() {
               <h4>{this.state.productBrand}</h4>
             </div>
         </InfoWindow>
-        <Search setMarkersData={this.setMarkers}/>
+        <Search setMarkersData={this.setMarkers} updateMarkersData={this.updateMarkers}/>
       </Map>
     );
   }
