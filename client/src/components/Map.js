@@ -37,8 +37,7 @@ onMapClick = (props, map, e) => {
     showingInfoWindow:false
   })
 }
-setMarkers = (data2, query) => {
-  let data = data2[query];
+setMarkers = (data, query) => {
   this.setState({
     ...data,
   });
@@ -85,6 +84,10 @@ render() {
               name={this.state.store}
               position={{lat: this.state.lat, lng: this.state.lng}}
               label={JSON.stringify(this.state.inStock)} />
+              <Marker onClick={this.onMarkerClick}
+                      name={this.state.store}
+                      position={{lat: this.state.lat, lng: this.state.lng}}
+                      label={JSON.stringify(this.state.inStock)} />
       <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
