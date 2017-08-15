@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import '../generated-sources/watched-products.css';
 import WatchedProducts from './WatchedProducts';
-
+import AlternativeStores from './AlternativeStores';
+import Sale from './Sale';
 class  SideNav extends Component {
 
   render() {
@@ -11,19 +12,15 @@ class  SideNav extends Component {
           <li id="watched">
               <WatchedProducts/>
           </li>
+          <li id="alternative">
+              <AlternativeStores/>
+          </li>
           <li>
-            <div className="icons">
-              <span id="stores"></span>
-            </div>
+              <Sale/>
           </li>
           <li>
             <div className="icons">
-              <span></span>
-            </div>
-          </li>
-          <li>
-            <div className="icons">
-              <span></span>
+              <span id="improve-app"></span>
             </div>
           </li>
         </ul>

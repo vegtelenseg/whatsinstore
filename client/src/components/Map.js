@@ -54,9 +54,15 @@ watchProduct = (e) => {
   alert("Watching");
 }
 render() {
-  const style = {
+  let style = {
     width: '100%',
-    height: '100%'
+    height: '100%',
+    streetViewControl: false,
+    featureType: "all",
+    elementType: "all",
+    stylers: [
+      "visibility": "off"
+    ]
   }
 
   return (
@@ -69,6 +75,8 @@ render() {
           }}
           enableEventPropagation={true}
           mapTypeControl={false}
+          streetViewControl={false}
+
           disableDefaultUI={true}
           centerAroundCurrentLocation={false}
           onClick={this.onMapClick}
@@ -78,7 +86,6 @@ render() {
               position={{lat: this.state.lat, lng: this.state.lng}}
               label={JSON.stringify(this.state.inStock)} />
       <InfoWindow
-          className={"info-window"}
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
           onClose={this.onInfoWindowClose}>

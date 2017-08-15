@@ -1,9 +1,9 @@
 .watched-products-container {
-  width: 200px;
+  width: 100%;
   overflow:hidden;
   position: absolute;
   top: 50%;
-  left:50%;
+  left:75%;
   transform: translateY(-50%);
   ul {
     margin: 0;
@@ -15,91 +15,75 @@
   li {
     display: block;
     margin: 0;
-    position: relative;
-    left: 50%;
     .icons {
-        display: inline-block;
-        height: 60px;
-        margin: 15px 0px 15px 30px;
-        text-align: center;
-        width: 60px;
-        span {
-          position:relative;
-          top:30%;
-        }
-    }
-  }
-  .icons {
-    text-decoration: none;
-    color: #1CB1F5;
-    background: #fff;
-    border: 2px solid #ccd718;
-    border-radius: 100%;
-    &:hover {
+      position: relative;
+      display: inline-block;
+      height: 60px;
+      width: 60px;
+      margin: 15px 0px 15px 30px;
+      text-align: center;
       text-decoration: none;
-      color: #000;
-      background: #1CB1F5;
-      box-shadow: 0px 0px 20px #1CB1F5;
+      color: #1CB1F5;
+      background: #fff;
+      border: 2px solid #ccd718;
       border-radius: 100%;
-      border: 2px solid #000;
-      transform: rotate(360deg);
-      transition: all 0.3s ease-out 0s;
+      &:hover {
+        text-decoration: none;
+        color: #000;
+        //background: #1CB1F5;
+        box-shadow: 0px 0px 20px #1CB1F5;
+        border-radius: 100%;
+        border: 2px solid #000;
+        transform: rotate(360deg);
+        transition: all 0.3s ease-out 0s;
+      }
+      span {
+        position:absolute;
+        top:30%;
+        height: 27px;
+        width: 27px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50px;
+        border: none;
+        box-sizing: border-box;
+        outline: none;
+        background-image: url('../images/watch.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+      #alternative-stores {
+        background-image: url('../images/store.png');
+      }
+      #sales {
+        background-image: url('../images/sale.png');
+      }
+      #improve-app {
+        background-image: url('../images/improve.png');
+
+      }
     }
   }
   #watched-products {
-    height: 35px;
-    width: 35px;
-    position: relative;
-    border-radius: 50px;
-    border: none;
-    box-sizing: border-box;
-    outline: none;
-    &:before {
-      content: '';
-      display: inline-block;
-      position: relative;
-      height: 20px;
-      width: 20px;
-      background-image: url('../images/watch.png');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-    }
-  }
-  #stores {
-    height: 35px;
-    width: 35px;
-    position: relative;
-    border-radius: 50px;
-    border: none;
-    box-sizing: border-box;
-    outline: none;
-    &:before {
-      content: '';
-      display: inline-block;
-      position: relative;
-      height: 20px;
-      width: 20px;
-      background-image: url('../images/store.png');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-    }
+
   }
   .watched-products-details {
     position: absolute;
   }
-  #show {
+  .show {
     visibility: visible;
-    position: absolute;
+    /*position: absolute;
     display: inline-block;
     left: -80px;
     top: 0;
     background-color: red;
-    width: 108px;
+    width: 108px;*/
   }
-  #hide {
+  .hide {
     visibility: hidden;
+    position: absolute;
   }
 }
 

@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
 
-class WatchedProducts extends Component {
+class AlternativeStores extends Component {
   constructor() {
     super();
     this.state ={
       showWatchedProductsDetails: false
     }
   }
-  showWatchedProducts = () => {
+  showAlternativeStores = () => {
     this.setState({
-      showWatchedProductsDetails:
-      this.state.showWatchedProductsDetails ? false : true
+      showAlternativeStores:
+      this.state.showAlternativeStores ? false : true
     })
   }
   render() {
     return (
       <div className="icons">
-        <span id="watched-products" onClick={this.showWatchedProducts}></span>
+        <span id="alternative-stores" onClick={this.showAlternativeStores}></span>
         <div className={
-          this.state.showWatchedProductsDetails ?
-          "show watched-products-details" : "hide"}
+            this.state.showAlternativeStores ?
+            "show" : "hide alternative-stores-details"
+          }
         >
           <p>Detail one</p>
           <p>Detail two</p>
@@ -30,4 +31,4 @@ class WatchedProducts extends Component {
   }
 }
 
-export default WatchedProducts;
+export default AlternativeStores;
