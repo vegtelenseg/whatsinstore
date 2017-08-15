@@ -1,0 +1,108 @@
+.watched-products-container {
+  width: 200px;
+  overflow:hidden;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translateY(-50%);
+  ul {
+    margin: 0;
+    padding: 0;
+    font: bold 14px Verdana;
+    list-style-type: none;
+    text-align: left;
+  }
+  li {
+    display: block;
+    margin: 0;
+    position: relative;
+    left: 50%;
+    .icons {
+        display: inline-block;
+        height: 60px;
+        margin: 15px 0px 15px 30px;
+        text-align: center;
+        width: 60px;
+        span {
+          position:relative;
+          top:30%;
+        }
+    }
+  }
+  .icons {
+    text-decoration: none;
+    color: #1CB1F5;
+    background: #fff;
+    border: 2px solid #ccd718;
+    border-radius: 100%;
+    &:hover {
+      text-decoration: none;
+      color: #000;
+      background: #1CB1F5;
+      box-shadow: 0px 0px 20px #1CB1F5;
+      border-radius: 100%;
+      border: 2px solid #000;
+      transform: rotate(360deg);
+      transition: all 0.3s ease-out 0s;
+    }
+  }
+  #watched-products {
+    height: 35px;
+    width: 35px;
+    position: relative;
+    border-radius: 50px;
+    border: none;
+    box-sizing: border-box;
+    outline: none;
+    &:before {
+      content: '';
+      display: inline-block;
+      position: relative;
+      height: 20px;
+      width: 20px;
+      background-image: url('../images/watch.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+  #stores {
+    height: 35px;
+    width: 35px;
+    position: relative;
+    border-radius: 50px;
+    border: none;
+    box-sizing: border-box;
+    outline: none;
+    &:before {
+      content: '';
+      display: inline-block;
+      position: relative;
+      height: 20px;
+      width: 20px;
+      background-image: url('../images/store.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+  .watched-products-details {
+    position: absolute;
+  }
+  #show {
+    visibility: visible;
+    position: absolute;
+    display: inline-block;
+    left: -80px;
+    top: 0;
+    background-color: red;
+    width: 108px;
+  }
+  #hide {
+    visibility: hidden;
+  }
+}
+
+#temp_menu {
+
+}

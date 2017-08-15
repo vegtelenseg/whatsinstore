@@ -1,7 +1,9 @@
 import React, {Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import Search from './Search';
+import WatchProduct from './WatchProduct';
 import '../generated-sources/map-styles.css';
+
 export class MapContainer extends Component {
 constructor() {
   super();
@@ -17,8 +19,9 @@ constructor() {
     productBrand: '',
     store:''
   }
-  this.setMarkers = this.setMarkers.bind(this)
-  this.updateMarkers = this.updateMarkers.bind(this)
+  this.setMarkers = this.setMarkers.bind(this);
+  this.updateMarkers = this.updateMarkers.bind(this);
+  this.watchProduct = this.watchProduct.bind(this);
 }
 
 onMarkerClick = (props, marker, e) => {
@@ -38,14 +41,17 @@ setMarkers = (data2, query) => {
   let data = data2[query];
   this.setState({
     ...data,
-    lat: data.latitude,
-    lng: data.longitude,
   });
 }
 updateMarkers = (data) => {
   this.setState({
     ...data
   })
+}
+
+watchProduct = (e) => {
+  e.preventDefault();
+  alert("Watching");
 }
 render() {
   const style = {
@@ -61,6 +67,8 @@ render() {
             lat: -26.107567,
             lng: 28.056702
           }}
+          enableEventPropagation={true}
+          mapTypeControl={false}
           disableDefaultUI={true}
           centerAroundCurrentLocation={false}
           onClick={this.onMapClick}
@@ -80,6 +88,8 @@ render() {
               <h4>{this.state.checkoutRate}</h4>
               <h4>{this.state.inStock}</h4>
               <h4>{this.state.productBrand}</h4>
+              <button type="button" onClick={this.watchProduct}>Watch</button>
+              <WatchProduct />
             </div>
         </InfoWindow>
         <Search setMarkersData={this.setMarkers} updateMarkersData={this.updateMarkers}/>
