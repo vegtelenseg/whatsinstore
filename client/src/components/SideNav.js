@@ -4,13 +4,15 @@ import WatchedProducts from './WatchedProducts';
 import AlternativeStores from './AlternativeStores';
 import Sale from './Sale';
 class  SideNav extends Component {
-
+  that = () => {
+    alert("Im going to");
+  }
   render() {
     return(
       <div className="watched-products-container">
         <ul>
           <li id="watched">
-              <WatchedProducts/>
+              <WatchedProducts onClick={this.that.bind(this)}/>
           </li>
           <li id="alternative">
               <AlternativeStores/>

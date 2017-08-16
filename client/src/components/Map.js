@@ -37,11 +37,13 @@ onMapClick = (props, map, e) => {
     showingInfoWindow:false
   })
 }
+
 setMarkers = (data, query) => {
   this.setState({
     ...data,
   });
 }
+
 updateMarkers = (data) => {
   this.setState({
     ...data
@@ -52,6 +54,7 @@ watchProduct = (e) => {
   e.preventDefault();
   alert("Watching");
 }
+
 render() {
   let style = {
     width: '100%',

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Popup from 'react-popup';
 
 class WatchedProducts extends Component {
   constructor() {
@@ -8,23 +9,28 @@ class WatchedProducts extends Component {
     }
   }
   showWatchedProducts = () => {
-    this.setState({
-      showWatchedProductsDetails:
-      this.state.showWatchedProductsDetails ? false : true
-    })
+    Popup.create({
+    title: 'The title',
+    content: 'Hello, look at me',
+    className: 'alert',
+    buttons: {
+        right: ['ok']
+    }
+    });
   }
   render() {
     return (
-      <div className="icons">
+      <div className="icons" >
         <span id="watched-products" onClick={this.showWatchedProducts}></span>
-        <div className={
-          this.state.showWatchedProductsDetails ?
-          "show watched-products-details" : "hide"}
-        >
-          <p>Detail one</p>
-          <p>Detail two</p>
-          <p>Detail three</p>
-        </div>
+        <Popup
+            className="mm-popup"
+            btnClass="mm-popup__btn"
+            closeBtn={true}
+            closeHtml={null}
+            defaultOk="Ok"
+            defaultCancel="Cancel"
+            wildClasses={false}
+            closeOnOutsideClick={true} />
       </div>
     );
   }

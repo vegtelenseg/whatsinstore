@@ -3,7 +3,6 @@
   overflow:hidden;
   position: absolute;
   top: 50%;
-  left:75%;
   transform: translateY(-50%);
   ul {
     margin: 0;
@@ -11,6 +10,8 @@
     font: bold 14px Verdana;
     list-style-type: none;
     text-align: left;
+    position: relative;
+    right: -75%;
   }
   li {
     display: block;
