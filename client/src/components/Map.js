@@ -56,28 +56,26 @@ watchProduct = (e) => {
 }
 
 render() {
-  let style = {
-    width: '100%',
-    height: '100%',
+  let styles = [{
     streetViewControl: false,
     featureType: "all",
     elementType: "all",
     stylers: [
-      "visibility": "off"
+      {'color': '#ee3dfe'}
     ]
-  }
+  }];
 
   return (
     <Map google={this.props.google}
           zoom={16}
-          style={style}
+          style={styles}
           initialCenter={{
             lat: -26.107567,
             lng: 28.056702
           }}
           enableEventPropagation={true}
-          mapTypeControl={false}
-          streetViewControl={false}
+          mapTypeControl={false} // We don't need satellite views because we are not interested in viewing places but showing where they virtually are.
+          streetViewControl={true}
 
           disableDefaultUI={true}
           centerAroundCurrentLocation={false}
@@ -86,6 +84,7 @@ render() {
       <Marker onClick={this.onMarkerClick}
               name={this.state.store}
               position={{lat: this.state.lat, lng: this.state.lng}}
+              defaultAnimation={2}
               label={JSON.stringify(this.state.inStock)} />
               <Marker onClick={this.onMarkerClick}
                       name={this.state.store}
