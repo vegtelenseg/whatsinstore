@@ -22,6 +22,8 @@ constructor() {
   this.setMarkers = this.setMarkers.bind(this);
   this.updateMarkers = this.updateMarkers.bind(this);
   this.watchProduct = this.watchProduct.bind(this);
+  this.onMarkerClick = this.onMarkerClick.bind(this);
+  this.onMapClick = this.onMapClick.bind(this);
 }
 
 onMarkerClick = (props, marker, e) => {
@@ -53,16 +55,14 @@ watchProduct = (e) => {
   alert("Watching");
 }
 render() {
-  let style = {
-    width: '100%',
-    height: '100%',
+  let style = [{
     streetViewControl: false,
     featureType: "all",
     elementType: "all",
     stylers: [
-      "visibility": "off"
+      {visibility: 'off'}
     ]
-  }
+  }]
 
   return (
     <Map google={this.props.google}
