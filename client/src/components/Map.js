@@ -44,38 +44,42 @@ export class MapContainer extends Component {
   }
 
   setMarkers = (data, query) => {
-    let markersObjects = null;
-    let infoWindows = null;
-    this.state.markersData.push(...data)
-    markersObjects = this.state.markersData.map((markerData, key) => {
-      return (
-        <Marker onClick={this.onMarkerClick}
-        name={markerData.store}
-        position={{lat: markerData.lat, lng: markerData.lng}}
-        label={JSON.stringify(markerData.inStock)} />
-      );
+    let markersObjects = [];
+    //let infoWindows = null;
+//    this.state.markersData.push(...data);
+    this.setState({
+      markersData: [...data],
     });
-    infoWindows = this.state.markersData.map((markerData, key) => {
-      return (
-        <InfoWindow
+    data.map((markerData, key) => {
+      console.log(key);
+      console.log(markerData.store);
+      markersObjects.push(
+          <Marker key={Date.now + Math.random()}  onClick={this.onMarkerClick}
+            name={markerData.store}
+            position={{lat: markerData.lat, lng: markerData.lng}}
+            label={JSON.stringify(markerData.inStock)}
+          />
+      );
+      markersObjects.push(
+      <InfoWindow key={Date.now + Math.random()}
         marker={this.state.activeMarker}
         visible={this.state.showingInfoWindow}
         onClose={this.onInfoWindowClose}>
         <div className="info-window">
-        <h2>{this.state.selectedPlace.name}</h2>
-        <h4>{markerData.bestBefore}</h4>
-        <h4>{markerData.checkoutRate}</h4>
-        <h4>{markerData.inStock}</h4>
-        <h4>{markerData.productBrand}</h4>
-        <button type="button" onClick={this.watchProduct}>Watch</button>
-        <WatchProduct />
+          <h2>{this.state.selectedPlace.name}</h2>
+          <h4>{markerData.bestBefore}</h4>
+          <h4>{markerData.checkoutRate}</h4>
+          <h4>{markerData.inStock}</h4>
+          <h4>{markerData.productBrand}</h4>
+          <button type="button" onClick={this.watchProduct}>Watch</button>
+          <WatchProduct />
         </div>
-        </InfoWindow>
-      );
+      </InfoWindow>);
+      return true;
     });
+    //this.state.markerCollection.push(markersObjects);
     this.setState({
       markerCollection: markersObjects,
-      infoWindowCollection: infoWindows
     });
   }
 
@@ -99,11 +103,10 @@ export class MapContainer extends Component {
         {visibility: 'off'}
       ]
     }
-
+    console.log(this.state.markerCollection);
     return (
       <Map google={this.props.google}
       zoom={16}
-      style={styles}
       initialCenter={{
         lat: -26.107567,
         lng: 28.056702
@@ -117,7 +120,6 @@ export class MapContainer extends Component {
       onClick={this.onMapClick}
       >
       {this.state.markerCollection}
-      {this.state.infoWindowCollection}
       <Search setMarkersData={this.setMarkers} updateMarkersData={this.updateMarkers}/>
       </Map>
     );

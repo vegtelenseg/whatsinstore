@@ -27,11 +27,15 @@ class Search extends  Component {
         'Accept': 'application/json',
         'Access-Control-Allow-Origin': '*',
       });
+      console.log(this.state.inputValue);
       fetch(`/api/food?q=${this.state.inputValue}`, headers)
         .then((data) => {
-          return data.json();
+           return data.json();
       }).then(parsed => {
-        return this.props.setMarkersData(parsed, this.state.inputValue);
+        this.props.setMarkersData(parsed, this.state.inputValue);
+        return true;
+      }).catch(err => {
+        console.log("Search Component Querying Promise: " + err);
       });
     }
   }
