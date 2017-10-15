@@ -4,10 +4,14 @@
   "private": true,
   "proxy": "http://localhost:4300/",
   "dependencies": {
+    "google-map-react": "^0.24.0",
     "google-maps-react": "^1.1.0",
     "react": "^15.6.1",
+    "react-addons-create-fragment": "^15.6.2",
     "react-burger-menu": "^2.1.4",
     "react-dom": "^15.6.1",
+    "react-google-maps": "^8.5.0",
+    "recompose": "^0.26.0",
     "socket.io-client": "^2.0.3",
     "whatwg-fetch": "^2.0.3"
   },

@@ -31,7 +31,10 @@ class Search extends  Component {
         .then((data) => {
           return data.json();
       }).then(parsed => {
-        return this.props.setMarkersData(parsed, this.state.inputValue);
+          let result = Object.keys(parsed).map(function(key) {
+          return [parsed[key]];
+        });
+        return this.props.setMarkersData(result, this.state.inputValue);
       });
     }
   }
