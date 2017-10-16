@@ -24,14 +24,21 @@ const MapWithAMarkerClusterer = compose(
   }),
   withStateHandlers(() => ({
      isOpen: false,
+     selectedPlace: {},
+     showingInfoWindow: false
    }), {
      onToggleOpen: ({ isOpen }) => () => ({
        isOpen: !isOpen,
+     }),
+     onMarkerClick: (props, marker, e) => () => ({
+         selectedPlace: props,
+         activeMarker: marker,
+         showingInfoWindow: props.isOpen === false ? true : false,
      })
    }),
   withScriptjs,
   withGoogleMap
-)(props =>
+)((props, _, state) =>
   <GoogleMap
     defaultZoom={14}
     defaultCenter={{ lat:-26.105407, lng: 28.054264 }}
@@ -43,11 +50,11 @@ const MapWithAMarkerClusterer = compose(
     >
     {
       props.markers.map(marker => (
-        <div key={Math.random()}>
+        <div key={Math.random()}>*
           <Marker
             position={{ lat: marker[0].lat, lng: marker[0].lng }}
             label={JSON.stringify(marker[0].inStock)}
-            onClick={props.onToggleOpen}
+            onClick={(props, state, _) => props.onMarkerClick(props, state, _)}
           >
             {  props.isOpen &&
                 <InfoWindow
