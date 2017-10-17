@@ -9,11 +9,7 @@ import {
 import React from 'react';
 import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
 
-const onMarkerClick = (e) => {
-  alert("Yo");
-  console.log(e);
-
-}
+const onMarkerClick = (props) => props.isOpen = props.isOpen === false ? true : false
 const MapWithAMarkerClusterer = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places",
@@ -29,16 +25,11 @@ const MapWithAMarkerClusterer = compose(
    }), {
      onToggleOpen: ({ isOpen }) => () => ({
        isOpen: !isOpen,
-     }),
-     onMarkerClick: (props, marker, e) => () => ({
-         selectedPlace: props,
-         activeMarker: marker,
-         showingInfoWindow: props.isOpen === false ? true : false,
      })
    }),
   withScriptjs,
   withGoogleMap
-)((props, _, state) =>
+)((props) =>
   <GoogleMap
     defaultZoom={14}
     defaultCenter={{ lat:-26.105407, lng: 28.054264 }}
@@ -48,16 +39,15 @@ const MapWithAMarkerClusterer = compose(
       enableRetinaIcons
       gridSize={90}
     >
-    {
+    <div>{
       props.markers.map(marker => (
-        <div key={Math.random()}>*
-          <Marker
+          <Marker key={Math.random()}
             position={{ lat: marker[0].lat, lng: marker[0].lng }}
             label={JSON.stringify(marker[0].inStock)}
-            onClick={(props, state, _) => props.onMarkerClick(props, state, _)}
+            onClick={props.onToggleOpen}
           >
             {  props.isOpen &&
-                <InfoWindow
+                <InfoWindow onCloseClick={props.onToggleOpen}
                   defaultPosition={{lat: marker[0].lat, lng: marker[0].lng}}
                 >
                   <h4>{marker[0].bestBefore}</h4>
@@ -66,9 +56,9 @@ const MapWithAMarkerClusterer = compose(
                 </InfoWindow>
             }
           </Marker>
-        </div>
-      ))
-    }
+        )
+      )
+    }</div>
     </MarkerClusterer>
   </GoogleMap>
 );

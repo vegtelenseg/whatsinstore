@@ -50,11 +50,9 @@ onMapClick = (props) => {
   })
 }
 setMarkers = (data2, query) => {
-  console.log(data2);
+  console.log(data2[0]);
   this.setState({
-      markers:data2,
-      activeMarker: null,
-      showingInfoWindow:false
+      markers: data2
     })
   /*this.setState({
     ...data,
