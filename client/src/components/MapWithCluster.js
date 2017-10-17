@@ -19,7 +19,7 @@ const MapWithAMarkerClusterer = compose(
     center: { lat: -26.105407, lng: 28.054264  }
   }),
   withStateHandlers(() => ({
-     isOpen: false,
+     isOpen: true,
      selectedPlace: {},
      showingInfoWindow: false
    }), {
@@ -50,9 +50,11 @@ const MapWithAMarkerClusterer = compose(
                 <InfoWindow onCloseClick={props.onToggleOpen}
                   defaultPosition={{lat: marker[0].lat, lng: marker[0].lng}}
                 >
+                <div>
                   <h4>{marker[0].bestBefore}</h4>
                   <p>{marker[0].checkoutRate}</p>
                   <p>{marker[0].inStock}</p>
+                  </div>
                 </InfoWindow>
             }
           </Marker>
