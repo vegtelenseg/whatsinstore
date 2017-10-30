@@ -1,4 +1,4 @@
-import { compose, withProps, withState, withStateHandlers } from "recompose";
+import { compose, withProps, withStateHandlers } from "recompose";
 import {
   withScriptjs,
   withGoogleMap,
@@ -19,13 +19,18 @@ const MapWithAMarkerClusterer = compose(
     center: { lat: -26.105407, lng: 28.054264  }
   }),
   withStateHandlers(() => ({
-     isOpen: true,
+     isOpen: false,
      selectedPlace: {},
      showingInfoWindow: false
    }), {
      onToggleOpen: ({ isOpen }) => () => ({
        isOpen: !isOpen,
-     })
+     }),
+		 onMarkerClick: (state, markers, e) => (marker) => {
+			 console.log("Some marker information ", markers.markers, marker);
+			 state.isOpen = !state.isOpen;
+			 state.selectedPlace = marker;
+		 }
    }),
   withScriptjs,
   withGoogleMap
@@ -44,7 +49,7 @@ const MapWithAMarkerClusterer = compose(
           <Marker key={Math.random()}
             position={{ lat: marker[0].lat, lng: marker[0].lng }}
             label={JSON.stringify(marker[0].inStock)}
-            onClick={props.onToggleOpen}
+            onClick={(e) => props.onMarkerClick(e)}
           >
             {  props.isOpen &&
                 <InfoWindow onCloseClick={props.onToggleOpen}

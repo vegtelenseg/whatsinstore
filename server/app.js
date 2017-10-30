@@ -41,7 +41,7 @@ if (process.env.NODE_ENV === config.ENV.PROD) {
 
 app.get('/api/food', (req, res, next) => {
   let databaseSnapshot = null;
-    ref.orderByChild("productName").equalTo(req.query.q).on("child_added", snapshot => {
+    ref.orderByChild("productName").equalTo(req.query.q).on("value", snapshot => {
       databaseSnapshot = snapshot.val();
   });
   res.send(databaseSnapshot);

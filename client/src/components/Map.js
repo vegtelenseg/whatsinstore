@@ -1,10 +1,7 @@
 import React, {Component } from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import Search from './Search';
-import WatchProduct from './WatchProduct';
 import '../generated-sources/map-styles.css';
 import MapWithAMarkerClusterer from './MapWithCluster';
-import createFragment from 'react-addons-create-fragment';
 
 export class MapContainer extends Component {
 constructor() {
@@ -69,16 +66,6 @@ watchProduct = (e) => {
   alert("Watching");
 }
 render() {
-  let style = {
-    width: '100%',
-    height: '100%',
-    streetViewControl: false,
-    featureType: "all",
-    elementType: "all",
-    stylers: [
-      "visibility": "off"
-    ]
-  }
   return (
     <div>
       <MapWithAMarkerClusterer markers={this.state.markers} isOpen={true}/>
